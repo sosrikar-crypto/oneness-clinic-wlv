@@ -12,7 +12,17 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--dark);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body{
+  background:
+    radial-gradient(ellipse 900px 600px at 8% -5%, rgba(138,154,126,0.16), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 95% 15%, rgba(201,176,136,0.12), transparent 60%),
+    radial-gradient(ellipse 800px 700px at 15% 55%, rgba(138,154,126,0.09), transparent 55%),
+    radial-gradient(ellipse 900px 600px at 90% 85%, rgba(201,176,136,0.10), transparent 55%),
+    linear-gradient(180deg, #0d0f0c 0%, #101210 40%, #0d0f0c 100%);
+  background-attachment:fixed;
+  color:var(--text);font-family:'Jost',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 a{color:inherit;text-decoration:none;}
 
 .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease;}
@@ -36,7 +46,7 @@ nav.scrolled{background:rgba(13,15,12,0.96);backdrop-filter:blur(14px);padding:1
 
 .hero{position:relative;height:100vh;min-height:720px;display:flex;align-items:center;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1540206395-68808572332f?w=1800&q=85&fit=crop') center/cover;transform:scale(1.08);}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg, rgba(13,15,12,0.90) 42%, rgba(13,15,12,0.45) 100%);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg, rgba(13,15,12,0.92) 40%, rgba(13,15,12,0.55) 80%, rgba(138,154,126,0.25) 100%);}
 .hero-content{position:relative;z-index:2;padding:0 60px;max-width:720px;}
 .hero-tag{display:inline-flex;align-items:center;gap:12px;margin-bottom:28px;}
 .hero-tag-line{width:36px;height:1px;background:var(--gold);}
@@ -58,7 +68,7 @@ nav.scrolled{background:rgba(13,15,12,0.96);backdrop-filter:blur(14px);padding:1
 .strip-inner{display:inline-block;animation:marquee 26s linear infinite;font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:#0d0f0c;font-weight:500;}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-.about{padding:130px 60px;background:var(--dark);display:grid;grid-template-columns:0.9fr 1.1fr;gap:90px;align-items:center;}
+.about{padding:130px 60px;background:transparent;display:grid;grid-template-columns:0.9fr 1.1fr;gap:90px;align-items:center;position:relative;z-index:2;}
 .about-img{position:relative;height:560px;overflow:hidden;}
 .about-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.88);}
 .about-badge{position:absolute;bottom:26px;left:26px;background:var(--gold);color:#0d0f0c;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;padding:11px 20px;font-weight:500;}
@@ -71,7 +81,7 @@ nav.scrolled{background:rgba(13,15,12,0.96);backdrop-filter:blur(14px);padding:1
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--gold);line-height:1;}
 .stat-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:8px;}
 
-.services{padding:130px 60px;background:var(--dark2);}
+.services{padding:130px 60px;background:rgba(19,22,17,0.55);backdrop-filter:blur(6px);position:relative;z-index:2;}
 .section-header{margin-bottom:70px;}
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
 .service-card{background:var(--dark3);border:1px solid #1e2119;padding:42px 30px;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
@@ -82,7 +92,7 @@ nav.scrolled{background:rgba(13,15,12,0.96);backdrop-filter:blur(14px);padding:1
 .service-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:#fff;margin-bottom:12px;}
 .service-desc{font-size:0.8rem;color:var(--muted);line-height:1.7;}
 
-.membership{padding:130px 60px;background:var(--dark);display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.membership{padding:130px 60px;background:transparent;display:grid;grid-template-columns:1fr 1fr;gap:2px;position:relative;z-index:2;}
 .member-card{background:var(--dark3);border:1px solid #1e2119;padding:56px 48px;transition:border-color 0.3s;}
 .member-card:hover{border-color:rgba(201,176,136,0.3);}
 .member-card.featured{background:linear-gradient(160deg, rgba(201,176,136,0.08), var(--dark3));}
@@ -93,15 +103,16 @@ nav.scrolled{background:rgba(13,15,12,0.96);backdrop-filter:blur(14px);padding:1
 .member-list li{font-size:0.85rem;color:var(--text);padding:10px 0;border-bottom:1px solid #1e2119;display:flex;align-items:center;gap:10px;}
 .member-list li::before{content:'✦';color:var(--gold);font-size:0.7rem;}
 
-.team{padding:130px 60px;background:var(--dark2);}
+.team{padding:130px 60px;background:rgba(19,22,17,0.55);backdrop-filter:blur(6px);position:relative;z-index:2;}
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px;}
 .team-card{text-align:center;}
 .team-photo{width:100%;height:340px;object-fit:cover;margin-bottom:24px;filter:grayscale(15%) brightness(0.92);transition:filter 0.4s;}
 .team-card:hover .team-photo{filter:grayscale(0%) brightness(1);}
 .team-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;margin-bottom:6px;}
-.team-role{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);}
+.team-role{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.team-desc{font-size:0.78rem;color:var(--muted);line-height:1.6;max-width:280px;margin:0 auto;}
 
-.events{padding:130px 60px;background:var(--dark);}
+.events{padding:130px 60px;background:transparent;position:relative;z-index:2;}
 .events-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:60px;}
 .event-card{background:var(--dark3);border:1px solid #1e2119;display:grid;grid-template-columns:1fr 1.3fr;transition:border-color 0.3s;}
 .event-card:hover{border-color:rgba(201,176,136,0.3);}
@@ -112,13 +123,13 @@ nav.scrolled{background:rgba(13,15,12,0.96);backdrop-filter:blur(14px);padding:1
 .event-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:22px;}
 .event-link{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:3px;display:inline-block;width:fit-content;}
 
-.why{padding:130px 60px;background:var(--dark2);display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.why{padding:130px 60px;background:rgba(19,22,17,0.55);backdrop-filter:blur(6px);display:grid;grid-template-columns:repeat(3,1fr);gap:2px;position:relative;z-index:2;}
 .why-card{background:var(--dark3);border:1px solid #1e2119;padding:44px 36px;}
 .why-num{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);margin-bottom:20px;}
 .why-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#fff;margin-bottom:14px;}
 .why-desc{font-size:0.85rem;color:var(--muted);line-height:1.75;}
 
-.contact-section{padding:130px 60px;background:var(--dark);display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;}
+.contact-section{padding:130px 60px;background:transparent;display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;position:relative;z-index:2;}
 .contact-content p{font-size:0.95rem;color:var(--muted);line-height:1.85;margin:24px 0 40px;max-width:420px;}
 .contact-options{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;}
 .contact-option{display:flex;align-items:center;gap:16px;padding:22px 26px;border:1px solid #1e2119;background:var(--dark3);transition:border-color 0.3s;}
@@ -133,7 +144,7 @@ nav.scrolled{background:rgba(13,15,12,0.96);backdrop-filter:blur(14px);padding:1
 .hours-day{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
 .hours-time{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--gold);font-weight:400;}
 
-footer{padding:50px 60px;border-top:1px solid #1a1d16;display:flex;justify-content:space-between;align-items:center;}
+footer{padding:50px 60px;border-top:1px solid #1a1d16;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2;background:rgba(13,15,12,0.6);}
 .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--muted);letter-spacing:0.1em;}
 .footer-info{font-size:0.72rem;color:var(--muted);text-align:right;line-height:1.8;}
 .footer-social{display:flex;gap:16px;margin-top:10px;justify-content:flex-end;}
@@ -170,6 +181,7 @@ footer{padding:50px 60px;border-top:1px solid #1a1d16;display:flex;justify-conte
 </style>
 </head>
 <body>
+<div class="grain"></div>
 
 <nav id="nav">
   <div class="nav-logo">Oneness <em>Clinic</em></div>
@@ -221,7 +233,7 @@ footer{padding:50px 60px;border-top:1px solid #1a1d16;display:flex;justify-conte
 
 <section class="about reveal" id="about">
   <div class="about-img">
-    <img src="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=900&q=85&fit=crop" alt="Oneness Clinic interior"/>
+    <img src="https://static.wixstatic.com/media/3837bb_c05633effb5b44c897a0d8e3a1794dff~mv2.png/v1/fill/w_1800,h_1200,al_c,q_90/team.png" alt="The Oneness Clinic team"/>
     <div class="about-badge">Westlake Village's Wellness Destination</div>
   </div>
   <div class="about-content">
@@ -328,19 +340,22 @@ footer{padding:50px 60px;border-top:1px solid #1a1d16;display:flex;justify-conte
   </div>
   <div class="team-grid">
     <div class="team-card">
-      <img class="team-photo" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80&fit=crop" alt="Clinician"/>
-      <div class="team-name">Our Physicians</div>
-      <div class="team-role">Longevity Medicine</div>
+      <img class="team-photo" src="https://static.wixstatic.com/media/3837bb_1925bb1966bf465daa4e4033df784e14~mv2.jpg/v1/fill/w_800,h_800,al_c,q_90/Carlo.jpg" alt="Dr. Carlo Reyes"/>
+      <div class="team-name">Dr. Carlo Reyes</div>
+      <div class="team-role">MD, JD, FACEP &mdash; Founder</div>
+      <div class="team-desc">22+ years in Emergency Medicine, Longevity & Corporate Burnout Recovery</div>
     </div>
     <div class="team-card">
-      <img class="team-photo" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80&fit=crop" alt="Therapist"/>
-      <div class="team-name">Our Therapists</div>
-      <div class="team-role">Psychiatry & Therapy</div>
+      <img class="team-photo" src="https://static.wixstatic.com/media/3837bb_6dac42ac0bb640998bb72d69f0dee94a~mv2.jpg/v1/fill/w_800,h_800,al_c,q_90/Potluri.jpg" alt="Dr. Sirisha Potluri"/>
+      <div class="team-name">Dr. Sirisha Potluri</div>
+      <div class="team-role">Lifestyle Medicine Physician</div>
+      <div class="team-desc">Certified Plant-Based Nutritionist & Diabetes Educator</div>
     </div>
     <div class="team-card">
-      <img class="team-photo" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&q=80&fit=crop" alt="Coach"/>
-      <div class="team-name">Our Coaches</div>
-      <div class="team-role">Wellness & Mindfulness</div>
+      <img class="team-photo" src="https://static.wixstatic.com/media/3837bb_490b9f4d41084097b6a59343607e381d~mv2.jpeg/v1/fill/w_800,h_800,al_c,q_90/atman.jpeg" alt="Dr. Atman Reyes"/>
+      <div class="team-name">Dr. Atman Reyes</div>
+      <div class="team-role">MD &mdash; Psychiatry</div>
+      <div class="team-desc">Addiction Medicine & Transcranial Magnetic Stimulation</div>
     </div>
   </div>
 </section>
